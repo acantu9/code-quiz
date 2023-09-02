@@ -1,17 +1,45 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', 'Montserrat', sans-serif;
     box-sizing: border-box;
 }
 body {
-    background-color: rgb(68, 7, 83);
+    background-color: #440753;
 }
 .app {
-    background-color: white;
+    background-color: #fff;
+    color: #440753;
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
     border-radius: 10px;
     padding: 30px;
+    text-align: center;
+}
+.app h1 {
+    font-size: 25px;
+    color: #440753;
+    font-weight: 600;
+    padding: auto;
+}
+.quiz {
+    padding: 20px 0;
+}
+.quiz h2 {
+    font-size: 18px;
+    color: #440753;
+    font-weight: 600;
+}
+.btn{
+    background-color: #fff;
+    color: #440753;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #440753;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
 }
