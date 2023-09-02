@@ -60,3 +60,10 @@ body {
     cursor: pointer;
     display: none;
 }
+
+.correct {
+    background-color: #98FB98;
+}
+.incorrect {
+    background-color: #D9544D;
+}
