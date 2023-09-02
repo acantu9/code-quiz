@@ -21,17 +21,40 @@ body {
     font-size: 25px;
     color: #440753;
     font-weight: 600;
+    padding: 30px;
+    margin: 30px;
+}
+#viewScores {
+    color: #fff;
+    text-decoration: none;
     padding: 20px;
+    margin-top: 60px;
 }
 .quiz {
     padding: 20px 0;
+    display: none;
 }
 .quiz h2 {
     font-size: 18px;
     color: #440753;
     font-weight: 600;
 }
-.btn{
+#quizRules {
+    margin: 30px;
+}
+#startBtn {
+    background-color: #440753;
+    color: #fff;
+    font-weight: 500;
+    width: 20%;
+    border: 1px solid #440753;
+    padding: 10px;
+    margin: 30px 0;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn {
     background-color: #fff;
     color: #440753;
     font-weight: 500;
@@ -51,19 +74,6 @@ body {
 .btn:disabled {
     cursor: no-drop;
 }
-#nextBtn {
-    background-color: #440753;
-    color: #fff;
-    font-weight: 500;
-    width: 150px;
-    border: 0;
-    padding: 10px;
-    margin: 20px auto 0;
-    border-radius: 4px;
-    cursor: pointer;
-    display: none;
-}
-
 .correct {
     background-color: #98FB98;
 }

@@ -48,26 +48,35 @@ const questions = [
 
 const questionEl = document.getElementById("question");
 const answerBtn = document.getElementById("answer-btns");
-const nextBtn = document.getElementById("nextBtn");
+const startBtn = document.getElementById("startBtn");
 
 let currentQuestionIndex = 0;
 let score = 0;
 
 function startQuiz(){
+    document.querySelector(".intro").style.display = "none";
+    document.querySelector(".quiz").style.display = "block";
     currentQuestionIndex = 0;
     score = 0;
-    nextBtn.innerHTML = "Next";
     showQuestions();
 }
 
 function showQuestions() {
+    if(currentQuestionIndex >= questions.length) {
+        document.querySelector(".quiz").style.display = "none";
+        getInitals();
+        return;
+    }
     let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionEl.innerHTML = questionNo + ". " + currentQuestion.question;
 
+    answerBtn.innerHTML = "";
+
     currentQuestion.answers.forEach(answer => {
+        console.log(answer);
         const button = document.createElement("button");
-        button.innerHTML = answer.text;
+        button.innerText = answer.text;
         button.classList.add("btn");
         answerBtn.appendChild(button);
         if(answer.correct){
@@ -89,6 +98,7 @@ function selectAnswer(e) {
     const isCorrect = selectedBtn.dataset.correct === "true";
     if(isCorrect){
         selectedBtn.classList.add("correct");
+        score++;
     } else {
         selectedBtn.classList.add("incorrect");
     }
@@ -98,7 +108,36 @@ function selectAnswer(e) {
         }
         button.ariaDisabled = true;
     });
-    nextBtn.style.display = "block";
+    currentQuestionIndex++;
+    setTimeout(function(){
+    showQuestions();
+    }, 2000);
+    
 }
 
-startQuiz();
+function showScore(){
+    resetState();
+    questionEl.innerHTML = "You scored $(score) out of $"
+}
+
+function handleNextButton() {
+    currentQuestionIndex++;
+    if(currentQuestionIndex < question.length){
+        showQuestions();
+    } else {
+        showScore();
+    }
+};
+
+
+startBtn.addEventListener("click", ()=> {
+    startQuiz();
+})
+
+function getInitals() {
+    var initials = prompt("Please enter your initials");
+    var scores = JSON.parse(localStorage.getItem("score")) || [];
+    scores.push({initials, score});
+    localStorage.setItem("score", JSON.stringify(scores));
+    window.location.reload();
+}
