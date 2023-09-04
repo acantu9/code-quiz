@@ -7,6 +7,19 @@
 body {
     background-color: #440753;
 }
+.box {
+    color: #fff;
+    padding: 20px;
+    margin-top: 10px;
+}
+.viewScores {
+    text-decoration: none;
+    color: #fff;
+    float: left;
+}
+#timer {
+    float: right;
+}
 .app {
     background-color: #fff;
     color: #440753;
@@ -23,12 +36,6 @@ body {
     font-weight: 600;
     padding: 30px;
     margin: 30px;
-}
-#viewScores {
-    color: #fff;
-    text-decoration: none;
-    padding: 20px;
-    margin-top: 60px;
 }
 .quiz {
     padding: 20px 0;

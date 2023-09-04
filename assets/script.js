@@ -1,11 +1,11 @@
 const questions = [
     {
-        question: "Select all of the elements that require container tags.",
+        question: "Which elements require container tags?",
         answers: [
-            { text: "<img>", correct: false},
-            { text: "<h1>", correct: true},
-            { text: "<p>", correct: true},
-            { text: "<button>", correct: true},
+            { text: "<h1>", correct: false},
+            { text: "<p>", correct: false},
+            { text: "<button>", correct: false},
+            { text: "All of the above", correct: true}
         ]
     },
     {
@@ -36,12 +36,12 @@ const questions = [
         ]
     },
     {
-        question: "Select all of the semantic formatting tags that make web pages more accessible.",
+        question: "Select the semantic formatting tags that make web pages more accessible.",
         answers: [
-            { text: "<b>", correct: false},
-            { text: "<em>", correct: true},
-            { text: "<strong>", correct: true},
-            { text: "<i>", correct: false},
+            { text: "<b> and <br>", correct: false},
+            { text: "<em> and <strong>", correct: true},
+            { text: "<p> and <em>", correct: false},
+            { text: "<strong> and <b>", correct: false},
         ]
     },
 ];
@@ -49,16 +49,17 @@ const questions = [
 const questionEl = document.getElementById("question");
 const answerBtn = document.getElementById("answer-btns");
 const startBtn = document.getElementById("startBtn");
+const timerEl = document.getElementById("timer");
 
 let currentQuestionIndex = 0;
-let score = 0;
+let timer = 90;
 
 function startQuiz(){
     document.querySelector(".intro").style.display = "none";
     document.querySelector(".quiz").style.display = "block";
     currentQuestionIndex = 0;
-    score = 0;
     showQuestions();
+    startTimer();
 }
 
 function showQuestions() {
@@ -86,8 +87,16 @@ function showQuestions() {
     });
 }
 
+function startTimer() {
+        var intervalId = setInterval(function() {
+            timer--;
+            if(timer === 0) {
+                clearInterval(intervalId);
+            }
+        }, 1000);
+}
+
 function resetState() {
-    nextBtn.style.display = none;
     while(answerBtn.firstChild){
         answerBtn.removeChild(answerBtn.firstChild);
     };
