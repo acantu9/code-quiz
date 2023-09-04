@@ -45,14 +45,13 @@ const questions = [
         ]
     },
 ];
-
 const questionEl = document.getElementById("question");
 const answerBtn = document.getElementById("answer-btns");
 const startBtn = document.getElementById("startBtn");
 const timerEl = document.getElementById("timer");
 
 let currentQuestionIndex = 0;
-let timer = 90;
+let timer = 60;
 
 function startQuiz(){
     document.querySelector(".intro").style.display = "none";
@@ -88,12 +87,13 @@ function showQuestions() {
 }
 
 function startTimer() {
-        var intervalId = setInterval(function() {
-            timer--;
-            if(timer === 0) {
-                clearInterval(intervalId);
-            }
-        }, 1000);
+    var intervalId = setInterval(function() {
+        if(timer === 0) {
+            clearInterval(intervalId);
+        }
+        timer--;
+        timerEl.textContent = "Time: " + timer;
+    }, 1000);
 }
 
 function resetState() {
@@ -107,9 +107,14 @@ function selectAnswer(e) {
     const isCorrect = selectedBtn.dataset.correct === "true";
     if(isCorrect){
         selectedBtn.classList.add("correct");
-        score++;
+        timer = timer + 10;
     } else {
         selectedBtn.classList.add("incorrect");
+        if(timer >= 10) {
+            timer = timer - 10;
+        } else {
+            timer = 0;
+        }
     }
     Array.from(answerBtn.children).forEach(button => {
         if(button.dataset.correct === "true"){
@@ -129,22 +134,12 @@ function showScore(){
     questionEl.innerHTML = "You scored $(score) out of $"
 }
 
-function handleNextButton() {
-    currentQuestionIndex++;
-    if(currentQuestionIndex < question.length){
-        showQuestions();
-    } else {
-        showScore();
-    }
-};
-
-
 startBtn.addEventListener("click", ()=> {
     startQuiz();
 })
 
 function getInitals() {
-    var initials = prompt("Please enter your initials");
+    var initials = prompt("All done! Please enter your initials");
     var scores = JSON.parse(localStorage.getItem("score")) || [];
     scores.push({initials, score});
     localStorage.setItem("score", JSON.stringify(scores));
