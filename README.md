@@ -13,10 +13,10 @@ This is a coding quiz challenge that tests your knowledge of HTML, CSS, and Java
 
 ## Credits
 
-The following resources were used in creating this project:
-[YouTube Tutorial](https://www.youtube.com/watch?v=PBcqGxrr9g8)
-[BlackboxAI](https://www.useblackbox.ai)
-[Xpert Learning Assistant](https://bootcampspot.instructure.com/courses/4010/external_tools/313)
+The following resources were used in creating this project:<br><br>
+[YouTube Tutorial](https://www.youtube.com/watch?v=PBcqGxrr9g8)<br><br>
+[BlackboxAI](https://www.useblackbox.ai)<br><br>
+[Xpert Learning Assistant](https://bootcampspot.instructure.com/courses/4010/external_tools/313)<br><br>
 [Module 4 Challenge Review](https://zoom.us/rec/play/TLgbY1Z0BF-wLMjSlwPy5mJUl9n_wzBijZOHygA3XORGcAvPL33bjQ_Ktcwyv0OgvQIeZWF_MD3d8o-5.JCB0qwk9xB9VSzuM)
 
 And finally, I would like to express gratitude for my tutor, Chris B.
