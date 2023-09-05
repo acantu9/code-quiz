@@ -4,6 +4,11 @@ This is a coding quiz challenge that tests your knowledge of HTML, CSS, and Java
 
 ## How to play
 
+![Alt text](image.png)
+
+Using the following link:<br><br>
+[Take the coding quiz challenge](https://acantu9.github.io/code-quiz/?)<br>
+
 1. Click the "Start Quiz" button to begin.
 2. You will be presented with a series of multiple-choice questions.
 3. Select the correct answer by clicking on the corresponding button.
