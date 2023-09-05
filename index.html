@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="box">
-        <a class="viewScores" href= "highscore.html">View High Scores</a>
+        <!--<a class="viewScores" href= "highscore.html">View High Scores</a>-->
+        <p class="viewScores">View High Scores</p>
         <p id="timer">Time: 60</p>
     </div>
     <div class="app">
@@ -26,6 +27,21 @@
                 <button class="btn">Answer 3</button>
                 <button class="btn">Answer 4</button>
             </div>
+        </div>
+        <div class="quizEnd">
+            <h3>All done!</h3>
+            <p>Your final score is: <span id="score"></span></p>
+            <form>
+                <label>Enter initials:</label>
+                <input type="text">
+                <button id="submitBtn">Submit</button>
+            </form>
+        </div>
+        <div class="scores">
+            <h3>High Scores</h3>
+            <ol>
+                <li></li>
+            </ol>
         </div>
     </div>
     <script src="./assets/script.js"></script>

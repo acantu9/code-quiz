@@ -48,10 +48,14 @@ const questions = [
 const questionEl = document.getElementById("question");
 const answerBtn = document.getElementById("answer-btns");
 const startBtn = document.getElementById("startBtn");
+const submitBtn = document.getElementById("submitBtn");
 const timerEl = document.getElementById("timer");
+const scoreEl = document.getElementById("score");
 
 let currentQuestionIndex = 0;
 let timer = 60;
+let score = 0;
+let isQuizOver = false;
 
 function startQuiz(){
     document.querySelector(".intro").style.display = "none";
@@ -64,13 +68,13 @@ function startQuiz(){
 function showQuestions() {
     if(currentQuestionIndex >= questions.length) {
         document.querySelector(".quiz").style.display = "none";
-        getInitals();
+        endQuiz();
         return;
     }
     let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
-    questionEl.innerHTML = questionNo + ". " + currentQuestion.question;
 
+    questionEl.innerHTML = questionNo + ". " + currentQuestion.question;
     answerBtn.innerHTML = "";
 
     currentQuestion.answers.forEach(answer => {
@@ -88,12 +92,26 @@ function showQuestions() {
 
 function startTimer() {
     var intervalId = setInterval(function() {
-        if(timer === 0) {
+        if(timer === 0 || isQuizOver) {
             clearInterval(intervalId);
+            endQuiz();
+            finalScore();
+        } else {
+            timer--;
         }
-        timer--;
         timerEl.textContent = "Time: " + timer;
     }, 1000);
+}
+
+function endQuiz() {
+    document.querySelector(".quizEnd").style.display = "block";
+    document.querySelector(".quiz").style.display = "none";
+    isQuizOver = true;
+}
+
+function finalScore() {
+    score = timer;
+    scoreEl.textContent = score;
 }
 
 function resetState() {
@@ -110,7 +128,7 @@ function selectAnswer(e) {
         timer = timer + 10;
     } else {
         selectedBtn.classList.add("incorrect");
-        if(timer >= 10) {
+        if(timer > 10) {
             timer = timer - 10;
         } else {
             timer = 0;
@@ -125,23 +143,17 @@ function selectAnswer(e) {
     currentQuestionIndex++;
     setTimeout(function(){
     showQuestions();
-    }, 2000);
-    
+    }, 1000);
 }
 
-function showScore(){
-    resetState();
-    questionEl.innerHTML = "You scored $(score) out of $"
+function showScores() {
+    document.querySelector(".scores").style.display = "block";
 }
 
 startBtn.addEventListener("click", ()=> {
     startQuiz();
 })
 
-function getInitals() {
-    var initials = prompt("All done! Please enter your initials");
-    var scores = JSON.parse(localStorage.getItem("score")) || [];
-    scores.push({initials, score});
-    localStorage.setItem("score", JSON.stringify(scores));
-    window.location.reload();
-}
+submitBtn.addEventListener("click", ()=> {
+    showScores();
+})

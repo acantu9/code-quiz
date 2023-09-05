@@ -12,11 +12,6 @@ body {
     padding: 20px;
     margin-top: 10px;
 }
-.viewScores {
-    text-decoration: none;
-    color: #fff;
-    float: left;
-}
 #timer {
     float: right;
 }
@@ -48,6 +43,14 @@ body {
 }
 #quizRules {
     margin: 30px;
+}
+.quizEnd {
+    display:none ;
+    text-align: left;
+}
+.scores {
+    display: none;
+    text-align: center;
 }
 #startBtn {
     background-color: #440753;
@@ -86,4 +89,14 @@ body {
 }
 .incorrect {
     background-color: #D9544D;
+}
+#submitBtn {
+    background-color: #440753;
+    color: #fff;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #440753;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
 }
